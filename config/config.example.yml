@@ -1,0 +1,4 @@
+user: "some email"
+pass: "some path"
+save_game:
+  repo: "/Users/you/Desktop/rocksmith/savegame_repo"
