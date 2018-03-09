@@ -51,6 +51,7 @@ namespace :notes do
   end
 end
 
+desc "Rip configured arrangements"
 task :rip_arrangements do
   ArrangementRipper.rip!
 end
