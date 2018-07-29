@@ -43,10 +43,15 @@ class ProgressClient
   end
 
   def post_arrangement(type:, file:)
-    request_body = {
-      arrangement: {raw_json: JSON.parse(File.read(file)), dlc_type: type}
-    }
+    request_body = {arrangement: {raw_json: JSON.parse(File.read file), dlc_type: type} }
     response = self.class.post "/arrangements", body: request_body.to_json, headers: defaults_with_auth
+  end
+
+  def update_arrangement(type:, file:)
+    raw_json     = JSON.parse(File.read file)
+    id           = raw_json["Entries"].keys.first
+    request_body = { arrangement: {raw_json: raw_json} }
+    response     = self.class.put "/arrangements/#{id}", body: request_body.to_json, headers: defaults_with_auth
   end
 
   def get_flags

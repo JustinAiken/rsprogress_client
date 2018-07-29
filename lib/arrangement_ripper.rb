@@ -28,8 +28,13 @@ class ArrangementRipper
     if response.code.to_s =~ /20\d/
       body = JSON.parse(response.body)
       puts "#{filename}: created arrangement #{body['id']}"
+    elsif response.code.to_s == "422"
+      response = client.update_arrangement type: dir.dlc_type, file: filename
+      puts response.code
+      puts response.body
     else
       puts "#{filename}: failed with code #{response.code}"
+      puts "#{filename}: failed with code #{response.body}"
     end
   end
 end
