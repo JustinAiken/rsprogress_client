@@ -8,7 +8,7 @@ class ProgressClient
   if ENV.fetch("RAILS_ENV", "") == "PRODUCTION"
     base_uri "comingsoon"
   else
-    base_uri "http://rocksmith.dev/api"
+    base_uri "http://rocksmith.nom/api"
   end
 
   DEFAULT_HEADERS = {
